@@ -32,3 +32,16 @@ var aDate = ee.Date.fromYMD(2017, 1, 13)
 print('date', date)
 print('now date', eeNow)
 print ('test date', aDate)
+
+// server-side mapping
+var serverList = ee.List.sequence(0, 7)
+serverList = serverList.map(function(n) {
+  // serverList is an ee object (operates on the server-side)
+  // so use ee methods to process it inside the map() function
+  return ee.Number(n).add(1)
+
+  // this won't work
+  // return (n + 1)
+})
+
+print(serverList)
